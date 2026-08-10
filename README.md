@@ -1,5 +1,7 @@
 # Task Manager API
 
+![CI](https://github.com/JManu02/task-manager-api/actions/workflows/ci.yml/badge.svg)
+
 API REST lista para producción, construida con Node.js y Express. Implementa autenticación con JWT, refresh tokens, autorización por roles y CRUD completo de tareas.
 
 ## Demo en producción
@@ -14,6 +16,7 @@ URL base: `https://task-manager-api-n12m.onrender.com`
 - **MongoDB Atlas + Mongoose** — base de datos en la nube y ODM
 - **JWT + bcryptjs** — autenticación y hash de contraseñas
 - **Zod** — validación de inputs y esquemas
+- **Jest + Supertest + mongodb-memory-server** — tests unitarios y de integración, corridos en CI con GitHub Actions
 
 ## Funcionalidades
 
@@ -53,6 +56,12 @@ JWT_REFRESH_SECRET=tu_secreto_refresh
 
 ### 4. Iniciar el servidor
 npm run dev
+
+## Tests
+
+npm test
+
+Incluye tests unitarios de la capa de servicios (mockeando Mongoose) y tests de integración que levantan una MongoDB en memoria y hacen requests HTTP reales contra la API (registro, login, rutas protegidas, control de acceso por rol, logout). Corren automáticamente en cada push/PR vía GitHub Actions.
 
 ## Endpoints
 
